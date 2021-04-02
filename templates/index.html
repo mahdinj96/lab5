@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>City of Calgary Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+
+
+</head>
+
+
+<body>
+<h1>Map of City of Calgary</h1>
+
+<div id='map' style='width: 80%; height: 900px;'></div>
+
+</body>
+
+
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFoZGluYWltaSIsImEiOiJja2x1YmNtaTUwNHk3Mm5ueW4za2syN3RoIn0.-8ZpViNO2Fn9_XqBdPwQPQ';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/streets-v9', // style URL
+center: [-114.0719, 51.0447], // starting position [lng, lat]
+zoom: 12 // starting zoom
+});
+
+
+var polygon = turf.polygon([[
+  [116, -36],
+  [131, -32],
+  [146, -43],
+  [155, -25],
+  [133, -9],
+  [111, -22],
+  [116, -36]
+]]);
+
+var pointOnPolygon = turf.pointOnFeature(polygon);
+</script>
+
+</html>
